@@ -1,28 +1,66 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import {ReactComponent as Logo} from './logo.svg';
+import {ReactComponent as CogIcon} from "./icons/settings.svg";
+import {ReactComponent as ChevronIcon} from "./icons/arrow.svg";
+import {ReactComponent as BellIcon} from "./icons/bell.svg";
+import {ReactComponent as MessengerIcon} from "./icons/messenger.svg";
+import {ReactComponent as CaretIcon} from "./icons/triangle.svg";
+import {ReactComponent as PlusIcon} from "./icons/plus.svg";
+import './index.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <p>
-            React <code>App.js</code> - Nehal
-          </p>
-          <a
-              className="App-link"
-              href="https://github.com/Nehal-Bhautoo"
-              target="_blank"
-              rel="noopener noreferrer"
-          >
-            Git Repo
-          </a>
-        </header>
-      </div>
+function App() {
+  return (
+    <Navbar>
+      <NavItem icon={<Logo/>}/>
+      <NavItem icon={<PlusIcon/>}/>
+      <NavItem icon={<BellIcon/>}/>
+      <NavItem icon={<MessengerIcon/>}/>
+      <NavItem icon={<CaretIcon/>}>
+        <DropdownMenu/>
+      </NavItem>
+    </Navbar>
+  );
+}
+
+function Navbar(props) {
+  return (
+    <nav className="navbar">
+      <ul className="nav">{props.children}</ul>
+    </nav>
+  );
+}
+
+function NavItem(props) {
+  let [open, setOpen] = useState(false);
+  return (
+    <li>
+      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+        {props.icon}
+      </a>
+      {open && props.children}
+    </li>
+  );
+}
+
+function DropdownMenu() {
+  function DropdownItem(props ) {
+    return(
+      <a href="#" className="menu-item">
+        <span className="icon-button">{props.left}</span>
+        {props.children}
+        <span className="icon-right">{props.right}</span>
+      </a>
     );
   }
+  return(
+      <div className="dropdown-list">
+        <DropdownItem> My Profile</DropdownItem>
+        <DropdownItem
+            left = {<CogIcon/>}
+            right = {<ChevronIcon/>}> Setting
+        </DropdownItem>
+      </div>
+  );
 }
 
 export default App;
