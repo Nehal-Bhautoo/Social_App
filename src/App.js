@@ -6,6 +6,7 @@ import {ReactComponent as BellIcon} from "./icons/bell.svg";
 import {ReactComponent as MessengerIcon} from "./icons/messenger.svg";
 import {ReactComponent as CaretIcon} from "./icons/triangle.svg";
 import {ReactComponent as PlusIcon} from "./icons/plus.svg";
+import {ReactComponent as UserIcon} from "./icons/user.svg";
 import './index.css';
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
 function Navbar(props) {
   return (
-    <nav className="navbar">
+    <nav className="navbar-bar">
       <ul className="nav">{props.children}</ul>
     </nav>
   );
@@ -45,7 +46,7 @@ function NavItem(props) {
 function DropdownMenu() {
   function DropdownItem(props ) {
     return(
-      <a href="#" className="menu-item">
+      <a href="#" className="menu-items">
         <span className="icon-button">{props.left}</span>
         {props.children}
         <span className="icon-right">{props.right}</span>
@@ -53,13 +54,13 @@ function DropdownMenu() {
     );
   }
   return(
-      <div className="dropdown-list">
-        <DropdownItem> My Profile</DropdownItem>
-        <DropdownItem
-            left = {<CogIcon/>}
-            right = {<ChevronIcon/>}> Setting
-        </DropdownItem>
-      </div>
+    <div className="dropdown-lists">
+      <DropdownItem icon={<UserIcon/>}>My Profile</DropdownItem>
+      <DropdownItem
+          left = {<CogIcon/>}
+          right = {<ChevronIcon/>}> Setting
+      </DropdownItem>
+    </div>
   );
 }
 
