@@ -44,7 +44,7 @@ function NavItem(props) {
 }
 
 function DropdownMenu() {
-  function DropdownItem(props ) {
+  function DropdownItem(props) {
     return(
       <a href="#" className="menu-items">
         <span className="icon-button">{props.left}</span>
@@ -55,7 +55,7 @@ function DropdownMenu() {
   }
   return(
     <div className="dropdown-lists">
-      <DropdownItem icon={<UserIcon/>}>My Profile</DropdownItem>
+      <DropdownItem left={<UserIcon/>}>My Profile</DropdownItem>
       <DropdownItem
           left = {<CogIcon/>}
           right = {<ChevronIcon/>}> Setting
