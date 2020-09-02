@@ -11,6 +11,8 @@ import {ReactComponent as UserIcon} from "./icons/user.svg";
 import {ReactComponent as Undo} from "./icons/undo.svg";
 import {ReactComponent as Password} from "./icons/phishing.svg";
 import {ReactComponent as Delete} from "./icons/delete.svg";
+import {ReactComponent as Logout} from "./icons/logout.svg";
+import {ReactComponent as Edit} from "./icons/edit.svg";
 import './index.css';
 
 function App() {
@@ -78,6 +80,7 @@ function DropdownMenu() {
                     right = {<Redo/>}
                     goToMenu={"settings"}> Setting
                 </DropdownItem>
+                <DropdownItem left={<Logout/>}>Log-out</DropdownItem>
             </div>
         </CSSTransition>
 
@@ -88,6 +91,7 @@ function DropdownMenu() {
             className={"menu-secondary"}>
             <div className={"menu"}>
                 <DropdownItem left={<Undo/>} goToMenu={"main"} />
+                <DropdownItem left={<Edit/>}>Edit Profile</DropdownItem>
                 <DropdownItem left={<Password/>}>Change Password</DropdownItem>
                 <DropdownItem left={<Delete/>}>Deactivate Account</DropdownItem>
             </div>

@@ -82,10 +82,13 @@ a {
   fill: var(--text-color);
   /*width: 20px;*/
   height: 20px;
-  /*-webkit-animation:spin 4s linear infinite;*/
-  /*-moz-animation:spin 4s linear infinite;*/
-  /*animation:spin 4s linear infinite;*/
 }
+
+/*.icon-logo {*/
+/*  -webkit-animation:spin 4s linear infinite;*/
+/*  -moz-animation:spin 4s linear infinite;*/
+/*  animation:spin 4s linear infinite;*/
+/*}*/
 
 .dropdown-lists {
   position: absolute;
@@ -98,7 +101,7 @@ a {
   padding: 1rem;
   overflow: hidden;
   margin-left: -100px;
-    transition: height var(--speed) ease;
+  transition: height var(--speed) ease;
 }
 
 .menu-items {
