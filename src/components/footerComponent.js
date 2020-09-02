@@ -1,12 +1,12 @@
 import React from 'react';
 import "../index.css";
 
-function Body() {
+function FooterNav() {
     return (
-        <div className={"body"}>
+        <div className={"footer"}>
 
         </div>
     );
 }
 
-export default Body;
+export default FooterNav;

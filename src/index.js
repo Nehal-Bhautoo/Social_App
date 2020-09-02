@@ -3,21 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Body from "./components/bodyComponent";
+import FooterNav from "./components/footerComponent";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+      <Body />
+      <FooterNav />
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Body />
-    </React.StrictMode>,
-    document.getElementById('body')
-);
+// ReactDOM.render(
+//     <React.StrictMode>
+//
+//     </React.StrictMode>,
+//     document.getElementById('body')
+// );
+//
+// ReactDOM.render(
+//     <React.StrictMode>
+//
+//     </React.StrictMode>,
+//     document.getElementById('footer')
+// );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
