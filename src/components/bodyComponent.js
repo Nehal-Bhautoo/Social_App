@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -9,17 +9,17 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {green, orange, red, yellow} from '@material-ui/core/colors';
+import {blue, green, red, yellow} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AddIcon from '@material-ui/icons/Add';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import "../index.css";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
 import { DatePicker } from "@material-ui/pickers";
-import blue from "@material-ui/core/colors/blue";
 
 function Body() {
     return (
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     rootFirst: {
         maxWidth: "50%",
         float: "left",
-        marginTop: 10,
+        marginTop: 18,
         marginLeft: "1.5%",
         backgroundColor: "#242426",
         color: "#FFFFFF",
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         float: "right",
-        marginTop: 10,
+        marginTop: 18,
         marginRight: 20,
         backgroundColor: "#242426",
         color: "#FFFFFF",
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     profileCard: {
         maxWidth: 300,
         float: "left",
-        marginTop: 10,
+        marginTop: 18,
         marginLeft: 20,
         backgroundColor: "#242426",
     },
@@ -214,7 +214,7 @@ function ProfileCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <AddIcon />
                     </IconButton>
                 }
                 title="Nehal Bhautoo"
@@ -228,7 +228,7 @@ function ProfileCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <AddIcon />
                     </IconButton>
                 }
                 title="Kyle Gray"
@@ -242,7 +242,7 @@ function ProfileCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <AddIcon />
                     </IconButton>
                 }
                 title="Prentis"
@@ -256,7 +256,7 @@ function ProfileCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <AddIcon />
                     </IconButton>
                 }
                 title="Derick Morgan"

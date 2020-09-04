@@ -115,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     title: {
+        textShadow: 5,
         flexGrow: 1,
         fontWeight: "bold",
         color: blue[500],
