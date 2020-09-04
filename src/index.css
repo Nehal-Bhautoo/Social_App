@@ -169,8 +169,25 @@ a {
 
 /*Body*/
 .body {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   background-color: #242420;
+}
+
+.MuiSvgIcon-root {
+  color: #FFFFFF;
+}
+
+.MuiTypography-colorTextSecondary {
+  color: #FFFFFF;
+}
+
+.makeStyles-search-4 {
+  margin-right: 10px;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: var(--background);
 }
 
 /*Footer*/
@@ -179,3 +196,4 @@ a {
   height: 10vh;
   background-color: var(--background);
 }
+
