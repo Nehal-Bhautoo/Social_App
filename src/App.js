@@ -13,6 +13,8 @@ import {ReactComponent as Password} from "./icons/phishing.svg";
 import {ReactComponent as Delete} from "./icons/delete.svg";
 import {ReactComponent as Logout} from "./icons/logout.svg";
 import {ReactComponent as Edit} from "./icons/edit.svg";
+import {ReactComponent as MailIcon} from "./icons/mail.svg";
+import {ReactComponent as InboxIcon} from "./icons/inbox.svg";
 import './index.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +24,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import {blue} from "@material-ui/core/colors";
 
 function App() {
   return (
@@ -113,6 +116,8 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
+        fontWeight: "bold",
+        color: blue[500],
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
@@ -159,6 +164,12 @@ const useStyles = makeStyles((theme) => ({
     },
     appbar: {
         backgroundColor: "#242424",
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
     }
 }));
 
@@ -172,7 +183,6 @@ function SearchAppBar() {
                     <IconButton
                         edge="start"
                         className={classes.menuButton}
-                        color="#FFFFFF"
                         aria-label="open drawer">
                         <MenuIcon />
                     </IconButton>

@@ -162,6 +162,7 @@ a {
 .menu-secondary-exit {
 
 }
+
 .menu-secondary-exit-active {
     transform: translateX(110%);
     transition: all var(--speed) ease;
@@ -184,10 +185,6 @@ a {
 
 .makeStyles-search-4 {
   margin-right: 10px;
-}
-
-.MuiAppBar-colorPrimary {
-  background-color: var(--background);
 }
 
 /*Footer*/
