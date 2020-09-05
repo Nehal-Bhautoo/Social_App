@@ -166,11 +166,19 @@ a {
 .body {
   min-height: 200vh;
   height: fit-content;
-  background-color: #242420;
+  background-color: #1d1d1c;
+}
+
+.MuiTypography-colorTextSecondary {
+  color: #FFFFFF;
 }
 
 .MuiSvgIcon-root {
   color: #FFFFFF;
+}
+
+.MuiPaper-root {
+  background-color: #242424;
 }
 
 /*.MuiSvgIcon-root:hover {*/

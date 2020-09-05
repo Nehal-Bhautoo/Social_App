@@ -25,6 +25,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import {blue} from "@material-ui/core/colors";
 import Badge from '@material-ui/core/Badge';
 import clsx from "clsx";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import TextField from "@material-ui/core/TextField";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
 
 function App() {
   return (
@@ -177,12 +184,24 @@ const useStyles = makeStyles((theme) => ({
     },
     badge: {
         display: "flex",
+    },
+    dialog: {
+        backgroundColor: "#242424",
     }
 }));
 
 function SearchAppBar() {
     const classes = useStyles();
     const circle = <div className={clsx(classes.shape, classes.shapeCircle)} />;
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <div className={classes.root}>
             <AppBar className={classes.appbar}>
@@ -211,15 +230,40 @@ function SearchAppBar() {
                     </div>
                     <NavItem icon={<Logo/>}/>
                     <NavItem icon={<BellIcon/>}/>
-                    <Badge className={classes.badge} color="error" overlap="circle" badgeContent={4}>
+                    <Badge className={classes.badge} color="error" overlap="circle" badgeContent={4} onClick={handleClickOpen}>
                         {circle}
-                    <NavItem icon={<MessengerIcon/>}/>
+                        <NavItem icon={<MessengerIcon/>}/>
                     </Badge>
                     <NavItem icon={<CaretIcon/>}>
                         <DropdownMenu/>
                     </NavItem>
                 </Toolbar>
             </AppBar>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Messengers</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        To subscribe to this website, please enter your email address here. We will send updates
+                        occasionally.
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleClose} color="primary">
+                        Subscribe
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 }
