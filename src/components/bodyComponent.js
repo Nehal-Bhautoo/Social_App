@@ -19,7 +19,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import "../index.css";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
-import { DatePicker } from "@material-ui/pickers";
+import Tooltip from "@material-ui/core/Tooltip";
 
 function Body() {
     return (
@@ -27,6 +27,7 @@ function Body() {
             <ProfileCard/>
             <ImgMediaCard/>
             <RecipeReviewCard/>
+            <CalendarCard/>
         </div>
     );
 }
@@ -41,10 +42,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#242426",
         color: "#FFFFFF",
     },
-    calendar: {
-        maxWidth: 345,
-        float: "right",
-    },
     root: {
         maxWidth: 345,
         float: "right",
@@ -52,6 +49,15 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 20,
         backgroundColor: "#242426",
         color: "#FFFFFF",
+    },
+    calendarCard: {
+        width: "25.5%",
+        maxWidth: 345,
+        float: "right",
+        marginRight: 20,
+        backgroundColor: "#242426",
+        color: "#FFFFFF",
+        marginTop: 20
     },
     media: {
         backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -170,6 +176,19 @@ function ImgMediaCard() {
 
     return (
         <Card className={classes.rootFirst}>
+            <CardHeader className={classes.header}
+                avatar={
+                    <Avatar aria-label="recipe" className={classes.avatar1}>
+                        K
+                    </Avatar>
+                }
+                action={
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                }
+                title="Kyle Gray"
+            />
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
@@ -182,7 +201,7 @@ function ImgMediaCard() {
                         Lizard
                     </Typography>
                     <Typography variant="body2" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                        Lizards are a widespread group of squad mate reptiles, with over 6,000 species, ranging
                         across all continents except Antarctica
                     </Typography>
                 </CardContent>
@@ -213,9 +232,11 @@ function ProfileCard() {
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="settings">
-                        <AddIcon />
-                    </IconButton>
+                    <Tooltip title={"Add Friend"}>
+                        <IconButton aria-label="add">
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
                 }
                 title="Nehal Bhautoo"
                 subheader="February 24, 1997"
@@ -227,9 +248,11 @@ function ProfileCard() {
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="settings">
-                        <AddIcon />
-                    </IconButton>
+                    <Tooltip title={"Add Friend"}>
+                        <IconButton aria-label="add">
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
                 }
                 title="Kyle Gray"
                 subheader="February 24, 1997"
@@ -241,11 +264,13 @@ function ProfileCard() {
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="settings">
-                        <AddIcon />
-                    </IconButton>
+                    <Tooltip title={"Add Friend"}>
+                        <IconButton aria-label="add">
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
                 }
-                title="Prentis"
+                title="Prentice"
                 subheader="February 24, 1997"
             />
             <CardHeader className={classes.header}
@@ -255,11 +280,35 @@ function ProfileCard() {
                     </Avatar>
                 }
                 action={
+                    <Tooltip title={"Add Friend"}>
+                        <IconButton aria-label="add">
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
+                }
+                title="Derick Morgan"
+                subheader="February 24, 1997"
+            />
+        </Card>
+    );
+}
+
+function CalendarCard() {
+    const classes = useStyles();
+    return(
+        <Card className={classes.calendarCard}>
+            <CardHeader className={classes.header}
+                avatar={
+                    <Avatar aria-label="recipe" className={classes.avatar}>
+                        N
+                    </Avatar>
+                }
+                action={
                     <IconButton aria-label="settings">
                         <AddIcon />
                     </IconButton>
                 }
-                title="Derick Morgan"
+                title="Nehal Bhautoo"
                 subheader="February 24, 1997"
             />
         </Card>
