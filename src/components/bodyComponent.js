@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -20,6 +20,11 @@ import "../index.css";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import { KeyboardDatePicker } from "@material-ui/pickers";
+import DateFnsUtils from '@date-io/date-fns';
+import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
+import Popover from "@material-ui/core/Popover";
 
 function Body() {
     return (
@@ -102,6 +107,9 @@ const useStyles = makeStyles((theme) => ({
     avatar3: {
         backgroundColor: green[500],
         color: "#FFFFFF",
+    },
+    typography: {
+        padding: theme.spacing(2),
     }
 }));
 
@@ -113,6 +121,19 @@ function RecipeReviewCard() {
         setExpanded(!expanded);
     };
 
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     return (
         <Card className={classes.root}>
             <CardHeader className={classes.header}
@@ -123,7 +144,22 @@ function RecipeReviewCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <MoreVertIcon aria-describedby={id} onClick={handleClick} />
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}>
+                            <Button className={classes.typography}>Report</Button>
+                        </Popover>
                     </IconButton>
                 }
                 title="Nehal Bhautoo"
@@ -174,6 +210,19 @@ function RecipeReviewCard() {
 function ImgMediaCard() {
     const classes = useStyles();
 
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     return (
         <Card className={classes.rootFirst}>
             <CardHeader className={classes.header}
@@ -184,7 +233,22 @@ function ImgMediaCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <MoreVertIcon aria-describedby={id} onClick={handleClick} />
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}>
+                            <Button className={classes.typography}>Report</Button>
+                        </Popover>
                     </IconButton>
                 }
                 title="Kyle Gray"
@@ -270,7 +334,7 @@ function ProfileCard() {
                         </IconButton>
                     </Tooltip>
                 }
-                title="Prentice"
+                title="Emily Prentice"
                 subheader="February 24, 1997"
             />
             <CardHeader className={classes.header}
@@ -298,20 +362,35 @@ function CalendarCard() {
     return(
         <Card className={classes.calendarCard}>
             <CardHeader className={classes.header}
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        N
-                    </Avatar>
-                }
                 action={
                     <IconButton aria-label="settings">
-                        <AddIcon />
+                        <DateRangeIcon onClick={OpenCalendar} />
                     </IconButton>
                 }
-                title="Nehal Bhautoo"
-                subheader="February 24, 1997"
+                title="View Post By Date"
             />
         </Card>
+    );
+}
+
+function OpenCalendar() {
+    const [selectedDate, handleDateChange] = useState(new Date());
+    return (
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+                fullWidth
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-dialog"
+                label="Date picker dialog"
+                orientation="landscape"
+                value={selectedDate}
+                onChange={handleDateChange}
+                KeyboardButtonProps = {{
+                    'aria-label': 'change date',
+                }}
+            />
+        </MuiPickersUtilsProvider>
     );
 }
 

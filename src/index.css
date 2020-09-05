@@ -84,12 +84,6 @@ a {
   height: 20px;
 }
 
-/*.icon-logo {*/
-/*  -webkit-animation:spin 4s linear infinite;*/
-/*  -moz-animation:spin 4s linear infinite;*/
-/*  animation:spin 4s linear infinite;*/
-/*}*/
-
 .dropdown-lists {
   z-index: 500;
   position: absolute;
@@ -170,14 +164,20 @@ a {
 
 /*Body*/
 .body {
-  min-height: 100vh;
-  max-height: 100%;
+  min-height: 200vh;
+  height: fit-content;
   background-color: #242420;
 }
 
 .MuiSvgIcon-root {
   color: #FFFFFF;
 }
+
+/*.MuiSvgIcon-root:hover {*/
+/*  -webkit-animation:spin 4s linear infinite;*/
+/*  -moz-animation:spin 4s linear infinite;*/
+/*  animation:spin 4s linear infinite;*/
+/*}*/
 
 .MuiTypography-colorTextSecondary {
   color: #FFFFFF;

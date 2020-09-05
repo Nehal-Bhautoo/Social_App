@@ -13,8 +13,6 @@ import {ReactComponent as Password} from "./icons/phishing.svg";
 import {ReactComponent as Delete} from "./icons/delete.svg";
 import {ReactComponent as Logout} from "./icons/logout.svg";
 import {ReactComponent as Edit} from "./icons/edit.svg";
-import {ReactComponent as MailIcon} from "./icons/mail.svg";
-import {ReactComponent as InboxIcon} from "./icons/inbox.svg";
 import './index.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,6 +23,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {blue} from "@material-ui/core/colors";
+import Badge from '@material-ui/core/Badge';
+import clsx from "clsx";
 
 function App() {
   return (
@@ -171,12 +171,18 @@ const useStyles = makeStyles((theme) => ({
     },
     fullList: {
         width: 'auto',
+    },
+    shapeCircle: {
+        borderRadius: '40%',
+    },
+    badge: {
+        display: "flex",
     }
 }));
 
 function SearchAppBar() {
     const classes = useStyles();
-
+    const circle = <div className={clsx(classes.shape, classes.shapeCircle)} />;
     return (
         <div className={classes.root}>
             <AppBar className={classes.appbar}>
@@ -205,7 +211,10 @@ function SearchAppBar() {
                     </div>
                     <NavItem icon={<Logo/>}/>
                     <NavItem icon={<BellIcon/>}/>
+                    <Badge className={classes.badge} color="error" overlap="circle" badgeContent={4}>
+                        {circle}
                     <NavItem icon={<MessengerIcon/>}/>
+                    </Badge>
                     <NavItem icon={<CaretIcon/>}>
                         <DropdownMenu/>
                     </NavItem>
