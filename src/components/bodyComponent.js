@@ -25,7 +25,6 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
 import Popover from "@material-ui/core/Popover";
-import {Fab} from "@material-ui/core";
 import PopUpChat from "./PopUpChat";
 
 function Body() {
@@ -35,7 +34,6 @@ function Body() {
             <ImgMediaCard/>
             <RecipeReviewCard/>
             <CalendarCard/>
-            {/*<FloatingActionButton/>*/}
             <PopUpChat/>
         </div>
     );
@@ -448,17 +446,6 @@ function OpenCalendar() {
                 }}
             />
         </MuiPickersUtilsProvider>
-    );
-}
-
-function FloatingActionButton() {
-    const classes = useStyles();
-    return (
-        <div className={classes.floatIcon}>
-            <Fab color={"primary"} aria-label={"Add"}>
-                <AddIcon/>
-            </Fab>
-        </div>
     );
 }
 
