@@ -4,14 +4,10 @@ import './index.css';
 import App from './App';
 import Body from "./components/bodyComponent";
 import FooterNav from "./components/footerComponent";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-      {/*<SignIn/>*/}
-      {/*<SignUp/>*/}
       <App />
       <Body />
       <FooterNav />

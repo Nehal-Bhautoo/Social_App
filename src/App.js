@@ -4,7 +4,6 @@ import {ReactComponent as Logo} from './logo.svg';
 import {ReactComponent as CogIcon} from "./icons/settings.svg";
 import {ReactComponent as Redo} from "./icons/redo.svg";
 import {ReactComponent as BellIcon} from "./icons/bell.svg";
-import {ReactComponent as MessengerIcon} from "./icons/messenger.svg";
 import {ReactComponent as CaretIcon} from "./icons/triangle.svg";
 import {ReactComponent as PlusIcon} from "./icons/plus.svg";
 import {ReactComponent as UserIcon} from "./icons/user.svg";
@@ -22,16 +21,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import {blue} from "@material-ui/core/colors";
+import {blue, yellow} from "@material-ui/core/colors";
 import Badge from '@material-ui/core/Badge';
 import clsx from "clsx";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import TextField from "@material-ui/core/TextField";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
 
 function App() {
   return (
@@ -187,21 +179,20 @@ const useStyles = makeStyles((theme) => ({
     },
     dialog: {
         backgroundColor: "#242424",
-    }
+    },
+    header: {
+        color: "#FFFFFF",
+    },
+    avatar2: {
+        backgroundColor: yellow[500],
+        color: "#FFFFFF",
+    },
 }));
 
 function SearchAppBar() {
     const classes = useStyles();
     const circle = <div className={clsx(classes.shape, classes.shapeCircle)} />;
-    const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
     return (
         <div className={classes.root}>
             <AppBar className={classes.appbar}>
@@ -230,40 +221,11 @@ function SearchAppBar() {
                     </div>
                     <NavItem icon={<Logo/>}/>
                     <NavItem icon={<BellIcon/>}/>
-                    <Badge className={classes.badge} color="error" overlap="circle" badgeContent={4} onClick={handleClickOpen}>
-                        {circle}
-                        <NavItem icon={<MessengerIcon/>}/>
-                    </Badge>
                     <NavItem icon={<CaretIcon/>}>
                         <DropdownMenu/>
                     </NavItem>
                 </Toolbar>
             </AppBar>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Messengers</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We will send updates
-                        occasionally.
-                    </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Email Address"
-                        type="email"
-                        fullWidth
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleClose} color="primary">
-                        Subscribe
-                    </Button>
-                </DialogActions>
-            </Dialog>
         </div>
     );
 }

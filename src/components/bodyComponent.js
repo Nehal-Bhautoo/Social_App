@@ -9,7 +9,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {blue, green, red, yellow} from '@material-ui/core/colors';
+import {blue, green, orange, purple, red, yellow} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -25,6 +25,8 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
 import Popover from "@material-ui/core/Popover";
+import {Fab} from "@material-ui/core";
+import PopUpChat from "./PopUpChat";
 
 function Body() {
     return (
@@ -33,6 +35,8 @@ function Body() {
             <ImgMediaCard/>
             <RecipeReviewCard/>
             <CalendarCard/>
+            {/*<FloatingActionButton/>*/}
+            <PopUpChat/>
         </div>
     );
 }
@@ -108,6 +112,14 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: green[500],
         color: "#FFFFFF",
     },
+    avatar4: {
+        backgroundColor: purple[500],
+        color: "#FFFFFF",
+    },
+    avatar5: {
+        backgroundColor: orange[500],
+        color: "#FFFFFF",
+    },
     typography: {
         padding: theme.spacing(2),
     },
@@ -118,6 +130,11 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    },
+    floatIcon: {
+        '& > *': {
+            margin: theme.spacing(5),
+        },
     },
 }));
 
@@ -146,7 +163,7 @@ function RecipeReviewCard() {
         <Card className={classes.root}>
             <CardHeader className={classes.header}
                 avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
+                    <Avatar aria-label="recipe" className={classes.icon}>
                         N
                     </Avatar>
                 }
@@ -235,7 +252,7 @@ function ImgMediaCard() {
         <Card className={classes.rootFirst}>
             <CardHeader className={classes.header}
                 avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar1}>
+                    <Avatar aria-label="recipe" className={classes.addIcon}>
                         K
                     </Avatar>
                 }
@@ -361,6 +378,38 @@ function ProfileCard() {
                 title="Derick Morgan"
                 subheader="February 24, 1997"
             />
+            <CardHeader className={classes.header}
+                avatar={
+                    <Avatar aria-label="recipe" className={classes.avatar4}>
+                        D
+                    </Avatar>
+                }
+                action={
+                    <Tooltip title={"Add Friend"}>
+                        <IconButton aria-label="add">
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
+                }
+                title="David Rossi"
+                subheader="February 24, 1997"
+            />
+            <CardHeader className={classes.header}
+                avatar={
+                    <Avatar aria-label="recipe" className={classes.avatar5}>
+                        JJ
+                    </Avatar>
+                }
+                action={
+                    <Tooltip title={"Add Friend"}>
+                        <IconButton aria-label="add">
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
+                }
+                title="Jennifer Juereau"
+                subheader="February 24, 1997"
+            />
         </Card>
     );
 }
@@ -399,6 +448,17 @@ function OpenCalendar() {
                 }}
             />
         </MuiPickersUtilsProvider>
+    );
+}
+
+function FloatingActionButton() {
+    const classes = useStyles();
+    return (
+        <div className={classes.floatIcon}>
+            <Fab color={"primary"} aria-label={"Add"}>
+                <AddIcon/>
+            </Fab>
+        </div>
     );
 }
 
