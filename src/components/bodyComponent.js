@@ -24,6 +24,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import Popover from "@material-ui/core/Popover";
 import PopUpChat from "./PopUpChat";
 import TextField from "@material-ui/core/TextField";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function Body() {
     return (
@@ -36,6 +37,35 @@ function Body() {
         </div>
     );
 }
+
+const theme = createMuiTheme({
+   overrides: {
+       MuiTypography: {
+            colorTextSecondary: {
+                color: "#FFFFFF",
+            },
+       },
+       MuiInputBase: {
+           input: {
+               color: "#FFFFFF",
+           },
+           formControl: {
+               color: "#FFFFFF",
+           },
+           root: {
+               color: "#FFFFFF",
+           },
+       },
+       MuiFilledInput: {
+           input: {
+               color: "#FFFFFF",
+           },
+       },
+       MuiTextField: {
+           color: "#FFFFFF",
+       },
+   },
+});
 
 const useStyles = makeStyles((theme) => ({
 
@@ -139,9 +169,6 @@ const useStyles = makeStyles((theme) => ({
         },
         color: "#FFFFFF",
     },
-    textfield: {
-        color: "#FFFFFF",
-    },
     comments: {
         marginLeft: "50px",
         marginTop: "-40px",
@@ -171,35 +198,37 @@ function RecipeReviewCard() {
 
     return (
         <Card className={classes.root}>
-            <CardHeader className={classes.header}
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.icon}>
-                        N
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings" onClick={handleClick}>
-                        <MoreVertIcon aria-describedby={id}/>
-                        <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'center',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center',
-                            }}>
-                            <Button className={classes.typography}>Report</Button>
-                        </Popover>
-                    </IconButton>
-                }
-                title="Nehal Bhautoo"
-                subheader="February 24, 1997"
-            />
+            <ThemeProvider theme={theme}>
+                <CardHeader className={classes.header}
+                    avatar={
+                        <Avatar aria-label="recipe" className={classes.icon}>
+                            N
+                        </Avatar>
+                    }
+                    action={
+                        <IconButton aria-label="settings" onClick={handleClick}>
+                            <MoreVertIcon aria-describedby={id}/>
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}>
+                                <Button className={classes.typography}>Report</Button>
+                            </Popover>
+                        </IconButton>
+                    }
+                    title="Nehal Bhautoo"
+                    subheader="February 24, 1997"
+                />
+            </ThemeProvider>
             <CardMedia
                 className={classes.media}
                 component={"img"}
@@ -340,10 +369,11 @@ function ImgMediaCard() {
                         minutes.
                     </Typography>
                     <form className={classes.form} noValidate autoComplete="off">
-                        <TextField
-                            id="filled-basic"
-                            label="Filled" variant="filled"
-                            className={classes.textfield} />
+                        <ThemeProvider theme={theme}>
+                            <TextField
+                                id="filled-basic"
+                                label="Add Comment" variant="filled"/>
+                        </ThemeProvider>
                     </form>
                 </CardContent>
             </Collapse>
