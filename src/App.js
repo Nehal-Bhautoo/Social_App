@@ -22,7 +22,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {blue, yellow} from "@material-ui/core/colors";
-import Badge from '@material-ui/core/Badge';
 import clsx from "clsx";
 
 function App() {
@@ -191,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchAppBar() {
     const classes = useStyles();
-    const circle = <div className={clsx(classes.shape, classes.shapeCircle)} />;
+    // const circle = <div className={clsx(classes.shape, classes.shapeCircle)} />;
 
     return (
         <div className={classes.root}>

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Body from "./components/bodyComponent";
 import FooterNav from "./components/footerComponent";
+// import conn from "./js/connectDB";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

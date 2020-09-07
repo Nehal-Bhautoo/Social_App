@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -21,11 +21,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import DateRangeIcon from '@material-ui/icons/DateRange';
-import { KeyboardDatePicker } from "@material-ui/pickers";
-import DateFnsUtils from '@date-io/date-fns';
-import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider";
 import Popover from "@material-ui/core/Popover";
 import PopUpChat from "./PopUpChat";
+import TextField from "@material-ui/core/TextField";
 
 function Body() {
     return (
@@ -74,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     },
     expand: {
         transform: 'rotate(0deg)',
-        color: "#FFFFFF",
+        color: theme.palette.primary,
         marginLeft: 'auto',
         transition: theme.transitions.create('transform', {
             duration: theme.transitions.duration.shortest,
@@ -134,6 +132,20 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(5),
         },
     },
+    form: {
+        '& > *': {
+            margin: theme.spacing(1),
+            width: '45vw',
+        },
+        color: "#FFFFFF",
+    },
+    textfield: {
+        color: "#FFFFFF",
+    },
+    comments: {
+        marginLeft: "50px",
+        marginTop: "-40px",
+    },
 }));
 
 function RecipeReviewCard() {
@@ -166,8 +178,8 @@ function RecipeReviewCard() {
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon aria-describedby={id} onClick={handleClick} />
+                    <IconButton aria-label="settings" onClick={handleClick}>
+                        <MoreVertIcon aria-describedby={id}/>
                         <Popover
                             id={id}
                             open={open}
@@ -234,6 +246,11 @@ function ImgMediaCard() {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -300,10 +317,36 @@ function ImgMediaCard() {
                 <Button size="small" color="primary">
                     Share
                 </Button>
-                <Button size="small" color="primary">
+                <Button
+                    size="small"
+                    color="primary">
                     Comment
+                    <ExpandMoreIcon
+                        className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                        })}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"/>
                 </Button>
             </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <Avatar aria-label="recipe" className={classes.avatar3}>
+                        D
+                    </Avatar>
+                    <Typography paragraph className={classes.comments}>
+                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
+                        minutes.
+                    </Typography>
+                    <form className={classes.form} noValidate autoComplete="off">
+                        <TextField
+                            id="filled-basic"
+                            label="Filled" variant="filled"
+                            className={classes.textfield} />
+                    </form>
+                </CardContent>
+            </Collapse>
         </Card>
     );
 }
@@ -418,34 +461,13 @@ function CalendarCard() {
         <Card className={classes.calendarCard}>
             <CardHeader className={classes.header}
                 action={
-                    <IconButton aria-label="settings">
-                        <DateRangeIcon onClick={OpenCalendar} />
+                    <IconButton aria-label="settings" onClick={CalendarCard}>
+                        <DateRangeIcon />
                     </IconButton>
                 }
                 title="View Post By Date"
             />
         </Card>
-    );
-}
-
-function OpenCalendar() {
-    const [selectedDate, handleDateChange] = useState(new Date());
-    return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-                fullWidth
-                format="MM/dd/yyyy"
-                margin="normal"
-                id="date-picker-dialog"
-                label="Date picker dialog"
-                orientation="landscape"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps = {{
-                    'aria-label': 'change date',
-                }}
-            />
-        </MuiPickersUtilsProvider>
     );
 }
 

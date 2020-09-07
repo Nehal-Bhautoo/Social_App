@@ -34,7 +34,7 @@ class PopUpChat extends Component {
             <div>
             <Launcher
                 agentProfile={{
-                    teamName: 'react-chat-window',
+                    teamName: 'Message',
                     imageUrl: MessengerIcon,
                 }}
                 onMessageWasSent={this._onMessageWasSent.bind(this)}
