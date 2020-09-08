@@ -14,7 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/PersonAdd';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import "../index.css";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -25,6 +25,8 @@ import Popover from "@material-ui/core/Popover";
 import PopUpChat from "./PopUpChat";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import SendIcon from '@material-ui/icons/Send';
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 function Body() {
     return (
@@ -63,6 +65,16 @@ const theme = createMuiTheme({
        },
        MuiTextField: {
            color: "#FFFFFF",
+       },
+       MuiInputLabel: {
+           filled: {
+               color: "#FFFFFF",
+           },
+       },
+       MuiFormControl: {
+           root: {
+               borderBottomColor: "#FFFFFF",
+           },
        },
    },
 });
@@ -206,8 +218,8 @@ function RecipeReviewCard() {
                         </Avatar>
                     }
                     action={
-                        <IconButton aria-label="settings" onClick={handleClick}>
-                            <MoreVertIcon aria-describedby={id}/>
+                        <IconButton aria-label="settings">
+                            <MoreVertIcon aria-describedby={id} onClick={handleClick}/>
                             <Popover
                                 id={id}
                                 open={open}
@@ -302,7 +314,7 @@ function ImgMediaCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon aria-describedby={id} />
+                        <MoreVertIcon aria-describedby={id} onClick={handleClick}/>
                         <Popover
                             id={id}
                             open={open}
@@ -348,7 +360,8 @@ function ImgMediaCard() {
                 </Button>
                 <Button
                     size="small"
-                    color="primary">
+                    color="primary"
+                    onClick={handleExpandClick}>
                     Comment
                     <ExpandMoreIcon
                         className={clsx(classes.expand, {
@@ -372,7 +385,18 @@ function ImgMediaCard() {
                         <ThemeProvider theme={theme}>
                             <TextField
                                 id="filled-basic"
-                                label="Add Comment" variant="filled"/>
+                                label="Add Comment"
+                                variant="filled"
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment>
+                                            <IconButton
+                                                aria-label={"Send"}>
+                                                <SendIcon/>
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}/>
                         </ThemeProvider>
                     </form>
                 </CardContent>
