@@ -31,9 +31,9 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 function Body() {
     return (
         <div className={"body"} id={"body-component"}>
+            <FriendsList/>
+            <PostList/>
             <ProfileCard/>
-            <ImgMediaCard/>
-            <RecipeReviewCard/>
             <CalendarCard/>
             <PopUpChat/>
         </div>
@@ -82,15 +82,15 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
 
     rootFirst: {
-        maxWidth: "50%",
+        maxWidth: "100%",
         float: "left",
-        marginTop: 18,
-        marginLeft: "1.5%",
+        marginTop: "3%",
+
         backgroundColor: "#242426",
         color: "#FFFFFF",
     },
     root: {
-        maxWidth: 345,
+        maxWidth: "26%",
         float: "right",
         marginTop: 18,
         marginRight: 20,
@@ -98,13 +98,12 @@ const useStyles = makeStyles((theme) => ({
         color: "#FFFFFF",
     },
     calendarCard: {
-        width: "25.5%",
-        maxWidth: 345,
+        width: "26%",
         float: "right",
         marginRight: 20,
         backgroundColor: "#242426",
         color: "#FFFFFF",
-        marginTop: 20
+        marginTop: 8,
     },
     media: {
         backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -185,9 +184,82 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "50px",
         marginTop: "-40px",
     },
+    newContainer: {
+        maxWidth: "50%",
+        marginLeft: "1.5%",
+        float: "left",
+    },
+    newPost: {
+        backgroundColor: "#242426",
+        color: "#FFFFFF",
+    },
+    postCard: {
+        maxWidth: "100%",
+        marginTop: 18,
+    },
+    textField: {
+        width: "100%",
+    },
+    input: {
+        display: 'none',
+    },
+    buttonUpload: {
+        marginLeft: 10,
+        marginTop: 10,
+    },
 }));
 
-function RecipeReviewCard() {
+function CreatePost() {
+    const classes = useStyles();
+
+    return (
+        <div className={classes.postCard}>
+            <Card className={classes.newPost}>
+                <ThemeProvider theme={theme}>
+                    <CardHeader
+                        className={classes.header}
+                        title={"New Posts"}
+                    />
+                    <CardContent>
+                        <TextField
+                            className={classes.textField}
+                            id="filled-multiline-static"
+                            label="Add Comments"
+                            multiline
+                            rows={4}
+                            variant="filled"
+                        />
+                        <input
+                            accept="image/*"
+                            className={classes.input}
+                            id="contained-button-file"
+                            multiple
+                            type="file"
+                        />
+                        <label htmlFor="contained-button-file">
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                component="span"
+                                className={classes.buttonUpload}>
+                                Upload
+                            </Button>
+                        </label>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            component="span"
+                            className={classes.buttonUpload}>
+                            Post
+                        </Button>
+                    </CardContent>
+                </ThemeProvider>
+            </Card>
+        </div>
+    );
+}
+
+function ProfileCard() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -283,7 +355,7 @@ function RecipeReviewCard() {
     );
 }
 
-function ImgMediaCard() {
+function PostList() {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -305,107 +377,111 @@ function ImgMediaCard() {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Card className={classes.rootFirst}>
-            <CardHeader className={classes.header}
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.addIcon}>
-                        K
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon aria-describedby={id} onClick={handleClick}/>
-                        <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'center',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center',
-                            }}>
-                            <Button className={classes.typography}>Report</Button>
-                        </Popover>
-                    </IconButton>
-                }
-                title="Kyle Gray"
-            />
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    component="img"
-                    alt=""
-                    height="140"
+        <div className={classes.newContainer}>
+            <CreatePost/>
+            <Card className={classes.rootFirst}>
+                <CardHeader
+                    className={classes.header}
+                        avatar={
+                            <Avatar aria-label="recipe" className={classes.addIcon}>
+                                K
+                            </Avatar>
+                        }
+                        action={
+                            <IconButton aria-label="settings">
+                                <MoreVertIcon aria-describedby={id} onClick={handleClick}/>
+                                <Popover
+                                    id={id}
+                                    open={open}
+                                    anchorEl={anchorEl}
+                                    onClose={handleClose}
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'center',
+                                    }}
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'center',
+                                    }}>
+                                    <Button className={classes.typography}>Report</Button>
+                                </Popover>
+                            </IconButton>
+                        }
+                        title="Kyle Gray"
                 />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                        Lizards are a widespread group of squad mate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-            <CardActions>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <Button size="small" color="primary">
-                    Share
-                </Button>
-                <Button
-                    size="small"
-                    color="primary"
-                    onClick={handleExpandClick}>
-                    Comment
-                    <ExpandMoreIcon
-                        className={clsx(classes.expand, {
-                            [classes.expandOpen]: expanded,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"/>
-                </Button>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Avatar aria-label="recipe" className={classes.avatar3}>
-                        D
-                    </Avatar>
-                    <Typography paragraph className={classes.comments}>
-                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                        minutes.
-                    </Typography>
-                    <form className={classes.form} noValidate autoComplete="off">
-                        <ThemeProvider theme={theme}>
-                            <TextField
-                                id="filled-basic"
-                                label="Add Comment"
-                                variant="filled"
-                                InputProps={{
-                                    endAdornment: (
-                                        <InputAdornment>
-                                            <IconButton
-                                                aria-label={"Send"}>
-                                                <SendIcon/>
-                                            </IconButton>
-                                        </InputAdornment>
-                                    ),
-                                }}/>
-                        </ThemeProvider>
-                    </form>
-                </CardContent>
-            </Collapse>
-        </Card>
+                <CardActionArea>
+                    <CardMedia
+                        className={classes.media}
+                        component="img"
+                        alt=""
+                        height="140"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Lizard
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                            Lizards are a widespread group of squad mate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                    </IconButton>
+                    <Button size="small" color="primary">
+                        Share
+                    </Button>
+                    <Button
+                        size="small"
+                        color="primary"
+                        onClick={handleExpandClick}>
+                        Comment
+                        <ExpandMoreIcon
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: expanded,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"/>
+                    </Button>
+                </CardActions>
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <Avatar aria-label="recipe" className={classes.avatar3}>
+                            D
+                        </Avatar>
+                        <Typography paragraph className={classes.comments}>
+                            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
+                            minutes.
+                        </Typography>
+                        <form className={classes.form} noValidate autoComplete="off">
+                            <ThemeProvider theme={theme}>
+                                <TextField
+                                    id="filled-basic"
+                                    label="Add Comment"
+                                    variant="filled"
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment>
+                                                <IconButton
+                                                    aria-label={"Send"}>
+                                                    <SendIcon/>
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}/>
+                            </ThemeProvider>
+                        </form>
+                    </CardContent>
+                </Collapse>
+            </Card>
+        </div>
     );
 }
 
-function ProfileCard() {
+function FriendsList() {
     const classes = useStyles();
     return (
         <Card className={classes.profileCard}>
