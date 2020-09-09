@@ -85,7 +85,6 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "100%",
         float: "left",
         marginTop: "3%",
-
         backgroundColor: "#242426",
         color: "#FFFFFF",
     },
@@ -221,14 +220,16 @@ function CreatePost() {
                         title={"New Posts"}
                     />
                     <CardContent>
-                        <TextField
-                            className={classes.textField}
-                            id="filled-multiline-static"
-                            label="Add Comments"
-                            multiline
-                            rows={4}
-                            variant="filled"
-                        />
+                        <ThemeProvider theme={theme}>
+                            <TextField
+                                className={classes.textField}
+                                id="filled-multiline-static"
+                                label="Add Comments"
+                                multiline
+                                rows={4}
+                                variant="filled"
+                            />
+                        </ThemeProvider>
                         <input
                             accept="image/*"
                             className={classes.input}

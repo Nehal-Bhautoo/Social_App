@@ -5,13 +5,17 @@ import App from './App';
 import Body from "./components/bodyComponent";
 import FooterNav from "./components/footerComponent";
 // import conn from "./js/connectDB";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-      <App />
-      <Body />
-      <FooterNav />
+      {/*<SignUp/>*/}
+      <SignIn/>
+      {/*<App />*/}
+      {/*<Body />*/}
+      {/*<FooterNav />*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
