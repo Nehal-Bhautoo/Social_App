@@ -12,10 +12,10 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
       {/*<SignUp/>*/}
-      <SignIn/>
-      {/*<App />*/}
-      {/*<Body />*/}
-      {/*<FooterNav />*/}
+      {/*<SignIn/>*/}
+      <App />
+      <Body />
+      <FooterNav />
   </React.StrictMode>,
   document.getElementById('root')
 );
