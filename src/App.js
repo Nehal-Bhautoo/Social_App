@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {CSSTransition} from "react-transition-group";
-import {ReactComponent as Logo} from './logo.svg';
 import {ReactComponent as CogIcon} from "./icons/settings.svg";
 import {ReactComponent as Redo} from "./icons/redo.svg";
 import {ReactComponent as BellIcon} from "./icons/bell.svg";
@@ -22,6 +21,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {blue, yellow} from "@material-ui/core/colors";
+import UncontrolledLottie from "./components/UncontrolledLottie";
 
 function App() {
   return (
@@ -201,6 +201,7 @@ function SearchAppBar() {
                         aria-label="open drawer">
                         <MenuIcon />
                     </IconButton>
+                    <NavItem icon={<UncontrolledLottie/>}/>
                     <Typography className={classes.title} variant="h6" noWrap>
                         React App
                     </Typography>
@@ -217,7 +218,6 @@ function SearchAppBar() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
-                    <NavItem icon={<Logo/>}/>
                     <NavItem icon={<BellIcon/>}/>
                     <NavItem icon={<CaretIcon/>}>
                         <DropdownMenu/>
