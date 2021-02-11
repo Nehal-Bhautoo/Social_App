@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/nehal-bhautoo/social_app/badge)](https://www.codefactor.io/repository/github/nehal-bhautoo/social_app)
+
 ### Screenshots
 ![Screenshots](./screenshots/app.png)
 
